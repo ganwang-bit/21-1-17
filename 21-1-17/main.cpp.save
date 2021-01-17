@@ -1,0 +1,58 @@
+//#include <iostream>
+//
+//using namespace std;
+//
+//int main()
+//{
+//    cout << "Hello world!" << endl;
+//    return 0;
+//}
+//#include<iostream>
+//using namespace std;
+//class A
+//{
+//
+//};
+//class B{};
+//class C{
+//private:
+//A a;
+//B b;
+//public:
+//    B();
+//    ~B();
+//};
+//int main()
+//{
+//
+//    return 0;
+//}
+#include<iostream>
+using namespace std;
+class B;
+class A
+{
+public:
+    A(int ii):i(0){cout<<"A::A()"<<endl;}
+    ~A(){cout<<"A::~A()"<<endl;}
+    void print() {cout<<"A::print() "<<i<<endl;}
+    void set(int ii){i=ii;}
+    friend B;
+private:
+    int i;
+};
+class B:public A
+{
+public:
+    B():A(10){cout<<"B::B()"<<endl;}
+    ~B(){cout<<"B::~B()"<<endl;}
+    void fprint(){set(20);print();}
+};
+int main()
+{
+    B b;
+    b.set(10);
+    b.print();
+    b.fprint();
+    return 0;
+}
